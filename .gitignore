@@ -218,3 +218,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local datasets and trained spaCy models
+data/*.json
+data/*.jsonl
+data/*.csv
+models/
+results/
+!data/annotations.example.jsonl
