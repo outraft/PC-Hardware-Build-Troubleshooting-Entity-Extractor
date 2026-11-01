@@ -1,0 +1,91 @@
+{"text": "The graphics card keeps overheating under load.", "entities": [{"start": 4, "end": 17, "label": "COMPONENT_TYPE"}, {"start": 24, "end": 35, "label": "SYMPTOM"}]}
+{"text": "I need a new power supply for this build.", "entities": [{"start": 13, "end": 25, "label": "COMPONENT_TYPE"}]}
+{"text": "The motherboard arrived with a bent socket pin.", "entities": [{"start": 4, "end": 15, "label": "COMPONENT_TYPE"}, {"start": 31, "end": 46, "label": "SYMPTOM"}]}
+{"text": "My CPU cooler is too tall for the case.", "entities": [{"start": 3, "end": 13, "label": "COMPONENT_TYPE"}, {"start": 34, "end": 38, "label": "COMPONENT_TYPE"}]}
+{"text": "Replace the graphics card and test with a different monitor.", "entities": [{"start": 12, "end": 25, "label": "COMPONENT_TYPE"}]}
+{"text": "A solid state drive is faster than a hard drive for boot times.", "entities": [{"start": 2, "end": 19, "label": "COMPONENT_TYPE"}, {"start": 37, "end": 47, "label": "COMPONENT_TYPE"}]}
+{"text": "The power supply fan makes a grinding noise at startup.", "entities": [{"start": 4, "end": 16, "label": "COMPONENT_TYPE"}, {"start": 29, "end": 43, "label": "SYMPTOM"}]}
+{"text": "Corsair makes reliable power supplies and RAM kits.", "entities": [{"start": 0, "end": 7, "label": "BRAND"}]}
+{"text": "I recommend ASUS motherboards for this price range.", "entities": [{"start": 12, "end": 16, "label": "BRAND"}, {"start": 17, "end": 29, "label": "COMPONENT_TYPE"}]}
+{"text": "MSI and Gigabyte both offer good budget options.", "entities": [{"start": 0, "end": 3, "label": "BRAND"}, {"start": 8, "end": 16, "label": "BRAND"}]}
+{"text": "The Noctua fans are quieter than the Corsair alternatives.", "entities": [{"start": 4, "end": 10, "label": "BRAND"}, {"start": 37, "end": 44, "label": "BRAND"}]}
+{"text": "Samsung drives tend to outperform Kingston in benchmarks.", "entities": [{"start": 0, "end": 7, "label": "BRAND"}, {"start": 34, "end": 42, "label": "BRAND"}]}
+{"text": "EVGA stopped making graphics cards last year.", "entities": [{"start": 0, "end": 4, "label": "BRAND"}, {"start": 20, "end": 34, "label": "COMPONENT_TYPE"}]}
+{"text": "ASRock released a new Mini-ITX motherboard for AM5.", "entities": [{"start": 0, "end": 6, "label": "BRAND"}, {"start": 22, "end": 30, "label": "FORM_FACTOR"}, {"start": 31, "end": 42, "label": "COMPONENT_TYPE"}, {"start": 47, "end": 50, "label": "SOCKET"}]}
+{"text": "The RTX 4070 Super outperforms the RX 7800 XT in most games.", "entities": [{"start": 4, "end": 18, "label": "MODEL"}, {"start": 35, "end": 45, "label": "MODEL"}]}
+{"text": "My Ryzen 7 7800X3D runs cooler than the i9-13900K.", "entities": [{"start": 3, "end": 18, "label": "MODEL"}]}
+{"text": "The RTX 4090 draws too much power for a 750 W PSU.", "entities": [{"start": 4, "end": 12, "label": "MODEL"}, {"start": 40, "end": 45, "label": "POWER"}, {"start": 46, "end": 49, "label": "COMPONENT_TYPE"}]}
+{"text": "Benchmarks show the Ryzen 5 7600X beating the i5-13600K in value.", "entities": [{"start": 20, "end": 33, "label": "MODEL"}]}
+{"text": "The RX 6800 XT still performs well at 1440p resolution.", "entities": [{"start": 4, "end": 14, "label": "MODEL"}]}
+{"text": "I paired a Ryzen 9 7950X with an RTX 4080 Super for my workstation.", "entities": [{"start": 11, "end": 24, "label": "MODEL"}, {"start": 33, "end": 47, "label": "MODEL"}]}
+{"text": "The AM5 socket supports both Ryzen 7000 and 9000 series chips.", "entities": [{"start": 4, "end": 7, "label": "SOCKET"}]}
+{"text": "LGA1700 boards require a different cooler bracket than LGA1200.", "entities": [{"start": 0, "end": 7, "label": "SOCKET"}, {"start": 55, "end": 62, "label": "SOCKET"}]}
+{"text": "Check that your cooler is compatible with the AM5 socket before buying.", "entities": [{"start": 46, "end": 49, "label": "SOCKET"}]}
+{"text": "The B650 chipset offers good value for Ryzen 7000 builds.", "entities": [{"start": 4, "end": 8, "label": "CHIPSET"}]}
+{"text": "A Z790 board is required for overclocking Intel processors.", "entities": [{"start": 2, "end": 6, "label": "CHIPSET"}]}
+{"text": "The X670E chipset supports PCIe 5.0 for both GPU and storage.", "entities": [{"start": 4, "end": 9, "label": "CHIPSET"}, {"start": 27, "end": 35, "label": "INTERFACE"}, {"start": 45, "end": 48, "label": "COMPONENT_TYPE"}]}
+{"text": "An ATX motherboard will not fit in a Mini-ITX case.", "entities": [{"start": 3, "end": 6, "label": "FORM_FACTOR"}, {"start": 37, "end": 45, "label": "FORM_FACTOR"}, {"start": 7, "end": 18, "label": "COMPONENT_TYPE"}, {"start": 46, "end": 50, "label": "COMPONENT_TYPE"}]}
+{"text": "SFX power supplies are smaller than standard ATX units.", "entities": [{"start": 0, "end": 3, "label": "FORM_FACTOR"}, {"start": 45, "end": 48, "label": "FORM_FACTOR"}, {"start": 4, "end": 18, "label": "COMPONENT_TYPE"}]}
+{"text": "The Micro-ATX board fits but blocks the bottom fan mount.", "entities": []}
+{"text": "DDR5 memory is now standard for AM5 and LGA1700 platforms.", "entities": [{"start": 0, "end": 4, "label": "MEMORY_TYPE"}, {"start": 32, "end": 35, "label": "SOCKET"}, {"start": 40, "end": 47, "label": "SOCKET"}]}
+{"text": "You cannot mix DDR4 and DDR5 on the same motherboard.", "entities": [{"start": 15, "end": 19, "label": "MEMORY_TYPE"}, {"start": 24, "end": 28, "label": "MEMORY_TYPE"}, {"start": 41, "end": 52, "label": "COMPONENT_TYPE"}]}
+{"text": "DDR5 prices have dropped significantly this quarter.", "entities": [{"start": 0, "end": 4, "label": "MEMORY_TYPE"}]}
+{"text": "Upgrading from 16 GB to 32 GB made a noticeable difference.", "entities": [{"start": 15, "end": 20, "label": "CAPACITY"}, {"start": 24, "end": 29, "label": "CAPACITY"}]}
+{"text": "The 2 TB NVMe drive filled up faster than expected.", "entities": [{"start": 4, "end": 8, "label": "CAPACITY"}, {"start": 9, "end": 13, "label": "INTERFACE"}]}
+{"text": "I installed 64 GB of DDR5 for video editing workloads.", "entities": [{"start": 12, "end": 17, "label": "CAPACITY"}, {"start": 21, "end": 25, "label": "MEMORY_TYPE"}]}
+{"text": "NVMe drives are much faster than SATA for sequential reads.", "entities": [{"start": 0, "end": 4, "label": "INTERFACE"}, {"start": 33, "end": 37, "label": "INTERFACE"}]}
+{"text": "The PCIe 4.0 slot limits the GPU bandwidth slightly.", "entities": [{"start": 4, "end": 12, "label": "INTERFACE"}, {"start": 29, "end": 32, "label": "COMPONENT_TYPE"}]}
+{"text": "Use a SATA cable to connect the optical drive.", "entities": [{"start": 6, "end": 10, "label": "INTERFACE"}]}
+{"text": "The M.2 slot shares bandwidth with the PCIe 4.0 lanes.", "entities": [{"start": 4, "end": 7, "label": "INTERFACE"}, {"start": 39, "end": 47, "label": "INTERFACE"}]}
+{"text": "The RAM runs at 6000 MT/s with XMP enabled.", "entities": [{"start": 16, "end": 25, "label": "SPEED"}]}
+{"text": "CPU clock speed dropped to 3.8 GHz under thermal throttling.", "entities": [{"start": 27, "end": 34, "label": "SPEED"}, {"start": 41, "end": 59, "label": "SYMPTOM"}]}
+{"text": "Setting fan speed to 1200 RPM keeps noise levels acceptable.", "entities": [{"start": 21, "end": 29, "label": "SPEED"}]}
+{"text": "An 850 W power supply provides enough headroom for this build.", "entities": [{"start": 3, "end": 8, "label": "POWER"}, {"start": 9, "end": 21, "label": "COMPONENT_TYPE"}]}
+{"text": "The RTX 4090 recommends a 1000 W PSU at minimum.", "entities": [{"start": 4, "end": 12, "label": "MODEL"}, {"start": 26, "end": 32, "label": "POWER"}, {"start": 33, "end": 36, "label": "COMPONENT_TYPE"}]}
+{"text": "My 650 W unit cannot handle the peak power draw.", "entities": [{"start": 3, "end": 8, "label": "POWER"}]}
+{"text": "The cooler has a 160 mm height clearance requirement.", "entities": [{"start": 17, "end": 23, "label": "DIMENSION"}]}
+{"text": "Maximum GPU length is 320 mm in this case.", "entities": [{"start": 22, "end": 28, "label": "DIMENSION"}, {"start": 8, "end": 11, "label": "COMPONENT_TYPE"}]}
+{"text": "Random shutdowns occur during heavy gaming sessions.", "entities": [{"start": 0, "end": 16, "label": "SYMPTOM"}]}
+{"text": "The system freezes at the login screen every morning.", "entities": [{"start": 11, "end": 18, "label": "SYMPTOM"}]}
+{"text": "No display output from either the GPU or the motherboard.", "entities": [{"start": 0, "end": 10, "label": "SYMPTOM"}, {"start": 34, "end": 37, "label": "COMPONENT_TYPE"}, {"start": 45, "end": 56, "label": "COMPONENT_TYPE"}]}
+{"text": "Blue screen errors started after the latest driver update.", "entities": [{"start": 0, "end": 18, "label": "SYMPTOM"}]}
+{"text": "The PC reboots randomly under heavy load.", "entities": [{"start": 7, "end": 23, "label": "SYMPTOM"}]}
+{"text": "Screen flickering happens only at high refresh rates.", "entities": [{"start": 0, "end": 17, "label": "SYMPTOM"}]}
+{"text": "Boot loop after installing new RAM sticks.", "entities": [{"start": 0, "end": 9, "label": "SYMPTOM"}, {"start": 31, "end": 34, "label": "COMPONENT_TYPE"}]}
+{"text": "The DRAM LED lights up solid red on the motherboard.", "entities": [{"start": 4, "end": 12, "label": "ERROR_CODE"}, {"start": 40, "end": 51, "label": "COMPONENT_TYPE"}]}
+{"text": "Error code 0x00000124 usually points to a hardware fault.", "entities": [{"start": 11, "end": 21, "label": "ERROR_CODE"}]}
+{"text": "IRQL_NOT_LESS_OR_EQUAL appears after a RAM upgrade.", "entities": [{"start": 0, "end": 22, "label": "ERROR_CODE"}, {"start": 39, "end": 42, "label": "COMPONENT_TYPE"}]}
+{"text": "The VGA LED on the debug panel stays lit during POST.", "entities": [{"start": 4, "end": 11, "label": "ERROR_CODE"}]}
+{"text": "A CPU debug LED means the processor is not detected.", "entities": [{"start": 2, "end": 15, "label": "ERROR_CODE"}]}
+{"text": "WHEA_UNCORRECTABLE_ERROR shows up in the event viewer.", "entities": [{"start": 0, "end": 24, "label": "ERROR_CODE"}]}
+{"text": "Reseat the RAM sticks and try booting again.", "entities": [{"start": 0, "end": 21, "label": "ACTION"}]}
+{"text": "Update the BIOS to the latest version before installing new hardware.", "entities": [{"start": 0, "end": 15, "label": "ACTION"}]}
+{"text": "Clear CMOS by removing the battery for 30 seconds.", "entities": [{"start": 0, "end": 10, "label": "ACTION"}]}
+{"text": "Try a different PCIe slot to rule out a dead lane.", "entities": [{"start": 16, "end": 20, "label": "INTERFACE"}]}
+{"text": "Reinstall the GPU drivers after a clean uninstall.", "entities": [{"start": 14, "end": 17, "label": "COMPONENT_TYPE"}]}
+{"text": "Flash the BIOS using a USB drive to recover the board.", "entities": [{"start": 0, "end": 14, "label": "ACTION"}]}
+{"text": "Run memtest86 overnight to check for memory errors.", "entities": []}
+{"text": "Replace the thermal paste if temperatures exceed safe limits.", "entities": [{"start": 0, "end": 25, "label": "ACTION"}]}
+{"text": "Windows 11 requires TPM 2.0 and Secure Boot enabled.", "entities": [{"start": 0, "end": 10, "label": "OS"}]}
+{"text": "Ubuntu 22.04 has better driver support for AMD GPUs.", "entities": [{"start": 0, "end": 12, "label": "OS"}, {"start": 43, "end": 46, "label": "BRAND"}]}
+{"text": "The crash only happens on Windows 10 and not on Linux.", "entities": [{"start": 26, "end": 36, "label": "OS"}]}
+{"text": "My Corsair RM850x powers an RTX 4070 Super and Ryzen 7 7800X3D on a B650 board.", "entities": [{"start": 3, "end": 10, "label": "BRAND"}, {"start": 11, "end": 17, "label": "MODEL"}, {"start": 28, "end": 42, "label": "MODEL"}, {"start": 47, "end": 62, "label": "MODEL"}, {"start": 68, "end": 72, "label": "CHIPSET"}]}
+{"text": "After updating BIOS the DDR5 kit runs stable at 6000 MT/s on AM5.", "entities": [{"start": 24, "end": 28, "label": "MEMORY_TYPE"}, {"start": 48, "end": 57, "label": "SPEED"}, {"start": 61, "end": 64, "label": "SOCKET"}]}
+{"text": "The Samsung 990 Pro 2 TB NVMe boots Windows 11 in under 10 seconds.", "entities": [{"start": 4, "end": 11, "label": "BRAND"}, {"start": 20, "end": 24, "label": "CAPACITY"}, {"start": 25, "end": 29, "label": "INTERFACE"}, {"start": 36, "end": 46, "label": "OS"}]}
+{"text": "Noctua NH-D15 keeps the Ryzen 9 7950X under 75 degrees in an ATX case.", "entities": [{"start": 0, "end": 6, "label": "BRAND"}, {"start": 24, "end": 37, "label": "MODEL"}, {"start": 61, "end": 64, "label": "FORM_FACTOR"}]}
+{"text": "Reseating the GPU in the PCIe 4.0 slot fixed the no display issue.", "entities": [{"start": 0, "end": 17, "label": "ACTION"}, {"start": 25, "end": 33, "label": "INTERFACE"}, {"start": 49, "end": 59, "label": "SYMPTOM"}]}
+{"text": "Kingston Fury DDR5 at 5200 MT/s works with the ASRock B650 board.", "entities": [{"start": 0, "end": 8, "label": "BRAND"}, {"start": 14, "end": 18, "label": "MEMORY_TYPE"}, {"start": 22, "end": 31, "label": "SPEED"}, {"start": 47, "end": 53, "label": "BRAND"}, {"start": 54, "end": 58, "label": "CHIPSET"}]}
+{"text": "The ASUS ROG Strix Z790 supports DDR5 and PCIe 5.0.", "entities": [{"start": 4, "end": 8, "label": "BRAND"}, {"start": 19, "end": 23, "label": "CHIPSET"}, {"start": 33, "end": 37, "label": "MEMORY_TYPE"}, {"start": 42, "end": 50, "label": "INTERFACE"}]}
+{"text": "Gigabyte RTX 4060 at 115 W works fine with a 550 W PSU.", "entities": [{"start": 0, "end": 8, "label": "BRAND"}, {"start": 9, "end": 17, "label": "MODEL"}, {"start": 21, "end": 26, "label": "POWER"}, {"start": 45, "end": 50, "label": "POWER"}, {"start": 51, "end": 54, "label": "COMPONENT_TYPE"}]}
+{"text": "Clear CMOS and reseat the DDR5 sticks to fix the DRAM LED error.", "entities": [{"start": 0, "end": 10, "label": "ACTION"}, {"start": 26, "end": 30, "label": "MEMORY_TYPE"}, {"start": 49, "end": 57, "label": "ERROR_CODE"}]}
+{"text": "Ubuntu crashes with a kernel panic on the RX 7900 XTX.", "entities": [{"start": 0, "end": 6, "label": "OS"}, {"start": 22, "end": 34, "label": "SYMPTOM"}, {"start": 42, "end": 53, "label": "MODEL"}]}
+{"text": "MSI MAG B650 Tomahawk supports 128 GB of DDR5 memory.", "entities": [{"start": 0, "end": 3, "label": "BRAND"}, {"start": 8, "end": 12, "label": "CHIPSET"}, {"start": 31, "end": 37, "label": "CAPACITY"}, {"start": 41, "end": 45, "label": "MEMORY_TYPE"}]}
+{"text": "The 1000 W Seasonic powers an RTX 4090 and i9-13900K with no shutdowns.", "entities": [{"start": 4, "end": 10, "label": "POWER"}, {"start": 11, "end": 19, "label": "BRAND"}, {"start": 30, "end": 38, "label": "MODEL"}]}
+{"text": "An SFX 750 W unit fits the Mini-ITX case with 140 mm clearance.", "entities": [{"start": 3, "end": 6, "label": "FORM_FACTOR"}, {"start": 7, "end": 12, "label": "POWER"}, {"start": 27, "end": 35, "label": "FORM_FACTOR"}, {"start": 46, "end": 52, "label": "DIMENSION"}]}
+{"text": "Flashing BIOS resolved the boot loop on Windows 11 after a RAM swap.", "entities": [{"start": 27, "end": 36, "label": "SYMPTOM"}, {"start": 40, "end": 50, "label": "OS"}]}
+{"text": "The VGA LED cleared after reseating the RTX 3070 in the top PCIe slot.", "entities": [{"start": 4, "end": 11, "label": "ERROR_CODE"}, {"start": 40, "end": 48, "label": "MODEL"}, {"start": 60, "end": 64, "label": "INTERFACE"}]}
+{"text": "EVGA 1000 W PSU handles the RTX 4090 at 450 W draw without tripping OCP.", "entities": [{"start": 0, "end": 4, "label": "BRAND"}, {"start": 5, "end": 11, "label": "POWER"}, {"start": 12, "end": 15, "label": "COMPONENT_TYPE"}, {"start": 28, "end": 36, "label": "MODEL"}, {"start": 40, "end": 45, "label": "POWER"}]}
+{"text": "I followed the installation guide step by step but it still does not work.", "entities": []}
+{"text": "This is my first PC build and I am looking for advice.", "entities": []}
+{"text": "The temperatures are fine and performance is as expected.", "entities": []}
+{"text": "Everything works after the rebuild except the front panel audio.", "entities": []}
