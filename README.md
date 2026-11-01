@@ -2,12 +2,14 @@
 
 A Python NLP starter project for extracting PC-hardware entities and returning POS tags for every token. It uses **spaCy**: the English pipeline supplies POS tagging, while a trainable NER component is fine-tuned on your annotated, pre-cleaned examples.
 
-> **Data note:** [docyx/pc-part-dataset](https://github.com/docyx/pc-part-dataset) is a catalog of PC parts (JSON, JSONL, and CSV). It is not an annotated NER/POS corpus and does not contain the troubleshooting conversations needed to learn symptoms or fixes. Use it as a source of component vocabulary/features in your upstream data preparation; provide labeled text examples to train this extractor. Scraping and cleaning are intentionally out of scope here.
+> **Text source:** [Stack Exchange Super User hardware questions](https://api.stackexchange.com/2.3/questions?site=superuser&tagged=cpu%3Bmotherboard%3Bmemory%3Bpower-supply%3Bboot&pagesize=100&order=desc&sort=creation&filter=withbody). This is a focused query for questions tagged with CPU, motherboard, memory, power supply, and boot. The data team handles API collection, cleaning, and feature engineering; this project consumes their prepared text and annotations. No scraper is included.
 
 ## What it does
 
-- Predicts token-level POS tags for ordinary text and for product-name/spec values in the catalog. Dataset POS output keeps each token linked to its source feature field (such as `socket`, `speed`, or `form_factor`).
+- Predicts token-level POS tags for prepared hardware troubleshooting text.
 - Predicts custom, span-level NER tags for hardware/build and troubleshooting text.
+- Extracts base noun-phrase chunks (NP) with token-level IOB tags.
+- Detects and redacts common PII from upstream-provided text.
 - Trains from JSONL annotations, evaluates on a held-out split when the dataset is large enough, saves a reloadable spaCy model, and predicts from text or JSONL.
 - Accepts already-cleaned text. The model does not fetch, clean, or engineer data.
 
@@ -37,7 +39,7 @@ Use these exact labels in the annotation JSONL. Apply the most specific applicab
 
 Use `SYMPTOM`, `ERROR_CODE`, and `ACTION` only when training on labeled troubleshooting text. The parts catalog by itself cannot teach these labels. If a phrase could be tagged multiple ways, settle a consistent annotation policy before scaling the dataset.
 
-POS tags are produced by spaCy's English model and are **not** custom NER labels. The catalog has structured values rather than POS-annotated sentences, so this project does not claim to train a POS model from it. The dataset POS path applies standard English POS tags to lexical and numeric field values and preserves the feature name as context: for example, `3200` is tagged `NUM`, with `field: "speed"` identifying what that number means. Field names themselves are schema metadata, not POS-tagged sentence text. The included model is English-language; other languages need a matching POS base model.
+POS tags are produced by spaCy's English model and are **not** custom NER labels. They do not require POS annotations. The included model is English-language; other languages need a matching POS base model.
 
 ## Project layout
 
@@ -46,6 +48,8 @@ data/
   annotations.example.jsonl # Tiny synthetic format example
   train.jsonl             # Your annotated examples (local)
 models/                   # Generated model output (not included)
+.github/workflows/
+  ci-cd.yml               # Test matrix and version-tag release bundle
 src/pc_hardware_ner/
   __init__.py
   data.py                 # Read and validate JSONL annotations
@@ -53,6 +57,8 @@ src/pc_hardware_ner/
   train.py                # Train and evaluate
   predict.py              # CLI prediction
   dataset_pos.py          # POS-tag product/catalog JSON, JSONL, or CSV fields
+  chunking.py             # Parser-based NP chunks and IOB output
+  pii.py                  # Common PII detection and redaction
 requirements.txt
 ```
 
@@ -84,15 +90,15 @@ The text can also include an optional `id` or other metadata; training only read
 
 The project does not automatically create gold labels from product catalog fields. If your upstream feature engineering produces product names/categories, use those to help annotate sentences, then review spans and offsets. Include troubleshooting examples from a separately sourced/annotated corpus if those labels are required.
 
-## POS-tag PC-part catalog records
+## Optional POS-tag helper for PC-part catalog records
 
-The PC-part repository separates records by category and provides JSON arrays, JSONL, and CSV exports. `dataset_pos.py` reads these formats, POS-tags each non-empty scalar value (including product names and textual/spec values), and preserves the originating field name and array index on each token. This is the dataset-aware POS path; it does not require NER character-span annotations. Supply the category because category is represented by the source file, not necessarily a field in each record.
+`dataset_pos.py` is an optional helper for the earlier structured PC-part catalog format. It is separate from the Stack Exchange text pipeline and is not part of feature engineering or data collection.
 
 ```bash
 python -m src.pc_hardware_ner.dataset_pos --input data/json/motherboard.json --category motherboard --output results/motherboard-pos.jsonl
 ```
 
-Output is one JSONL row per product, with `name`, `category`, and `tokens`; each token includes `text`, Universal POS (`pos`), detailed spaCy tag (`tag`), `lemma`, `field`, and `value_index`. For a memory record such as `"speed": [4, 3200]`, the tags stay connected to the `speed` field and retain their array indices. It deliberately does not turn catalog properties into artificial sentences or pretend that the catalog contains gold POS annotations.
+Output is one JSONL row per product, with `name`, `category`, and `tokens`; each token includes `text`, Universal POS (`pos`), detailed spaCy tag (`tag`), `lemma`, `field`, and `value_index`.
 
 ## Train
 
@@ -120,15 +126,43 @@ python -m src.pc_hardware_ner.predict --model models/pc-hardware-ner --input dat
 
 Each output record contains the original text, entities with character offsets, and POS-tagged tokens. Use `--pretty` for readable single-text output. If no trained model exists yet, inference reports an error rather than silently using an untrained model.
 
+## Chunking
+
+Run parser-based base noun-phrase chunking on text already prepared by the data team. Output includes NP spans with character offsets and per-token `B-NP`/`I-NP`/`O` tags.
+
+```bash
+python -m src.pc_hardware_ner.chunking --text "My PC will not boot after I replaced the motherboard." --pretty
+python -m src.pc_hardware_ner.chunking --input data/processed.jsonl --output results/chunks.jsonl
+```
+
+This is a spaCy dependency-parser baseline, not a separately trained chunking model. It requires a model with a dependency parser.
+
+## PII detection/redaction
+
+Run on user-generated troubleshooting text supplied by the data team. It detects common email addresses, phone numbers, IPv4 addresses, usernames, and spaCy-recognized people/locations, then returns a redacted copy and original span offsets.
+
+```bash
+python -m src.pc_hardware_ner.pii --text "Email alex@example.com about the no-display issue." --pretty
+python -m src.pc_hardware_ner.pii --input data/processed.jsonl --output results/redacted.jsonl
+```
+
+PII detection is a safety baseline, not exhaustive: names/locations can be missed or over-redacted. Review its output before sharing text. It is intended for prose, not hardware specification fields where number patterns can be misidentified.
+
+Punctuation restoration is not included because Stack Exchange question/answer prose is already punctuated. It would need its own punctuation-corrupted inputs and clean reference targets to train/evaluate meaningfully.
+
 ## Tests
 
-The unit tests exercise both final stages: simple hardware requests are checked for both counterpart entities and offsets, and catalog-shaped product rows are checked for POS output that retains field/index context.
+The unit tests cover prediction, the optional catalog POS helper, noun-phrase chunking, and common PII redaction.
 
 ```bash
 python -m unittest discover -s tests -v
 ```
 
-The request test uses fixed `EntityRuler` patterns to make expected extraction deterministic; the dataset POS test uses a record shape from the source dataset. These tests cover output/pipeline behavior, not learned model accuracy or hardware compatibility.
+The request test uses fixed `EntityRuler` patterns to make expected extraction deterministic. Tests cover output behavior, not learned model accuracy, exhaustive PII recall, or hardware compatibility.
+
+## CI/CD
+
+GitHub Actions runs compilation and the unit tests on Python 3.10–3.12 for pushes, pull requests, and manual runs. Pushing a version tag such as `v0.1.0` runs the same checks and, if they pass, publishes a source bundle as a GitHub Release. The bundle does not contain local datasets or a trained model; there is no deployment target configured yet.
 
 ## Suggested workflow
 
@@ -141,14 +175,14 @@ The request test uses fixed `EntityRuler` patterns to make expected extraction d
 
 ## Data source and attribution
 
-The catalog source is [docyx/pc-part-dataset](https://github.com/docyx/pc-part-dataset), which describes its dataset as PCPartPicker parts and provides an MIT license. Review the source repository's current license and upstream terms before redistribution or commercial use. This project does not bundle or download that dataset.
+The planned text source is the [Stack Exchange API](https://api.stackexchange.com/), with the focused [Super User hardware query](https://api.stackexchange.com/2.3/questions?site=superuser&tagged=cpu%3Bmotherboard%3Bmemory%3Bpower-supply%3Bboot&pagesize=100&order=desc&sort=creation&filter=withbody). Follow Stack Exchange API terms and the per-post `content_license`; retain source links and attribution with the prepared corpus. Data collection and preparation are handled outside this project.
 
 ## Limitations
 
 - No trained project-specific model or usable training corpus is included; the tiny synthetic annotation file is only a format example.
-- A pretrained POS tagger may mis-tag hardware model strings, abbreviations, and specs. Field context is preserved, but numeric/structured specs are not POS-supervised gold annotations.
+- A pretrained POS tagger may mis-tag hardware model strings, abbreviations, and specs.
 - NER quality depends on consistent span annotations and sufficient examples for every desired label.
-- Catalog data supports part/product vocabulary, but not troubleshooting intent or symptom extraction by itself.
+- Chunking and PII detection are parser/rule-based baselines and should be evaluated on the team's prepared troubleshooting text.
 - This is a research/starter pipeline, not a hardware compatibility checker or diagnostic system.
 
 ## License
