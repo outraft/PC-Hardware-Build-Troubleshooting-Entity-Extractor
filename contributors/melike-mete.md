@@ -1,0 +1,75 @@
+# Contribution Record — Melike Mete
+
+**Student ID:** 2609131013
+**Project:** PC Hardware Build & Troubleshooting Entity Extractor
+
+## Contribution summary
+
+Implemented a data cleaning and validation script for Stack Exchange
+JSONL records before NER annotation. Added unit tests and validated
+the script using a locally generated sample of 20 Super User records.
+
+## Data cleaning implementation
+
+- Added `src/pc_hardware_ner/cleaning.py`.
+- Added JSONL input validation for invalid JSON, non-object records,
+  invalid question IDs, missing or non-string text, and empty text.
+- Added duplicate detection by question ID and exact cleaned text,
+  keeping the first valid occurrence.
+- Normalized line endings and non-breaking spaces and removed
+  leading and trailing whitespace.
+- Preserved capitalization, punctuation, technical identifiers,
+  internal line structure, and source metadata.
+- Kept questions without accepted answers.
+- Separated records containing an `entities` field to avoid changing
+  text with existing annotation offsets.
+- Saved rejected records with line numbers and rejection reasons
+  for inspection.
+- Added configurable input, output, and rejection-file paths.
+- Added checks to prevent input and output paths from being identical.
+- Reported processed, kept, and rejected record counts.
+
+The script consumes the scraper's plain-text output and does not
+repeat HTML parsing, perform PII redaction, or generate NER labels.
+
+## Tests
+
+Added `tests/test_cleaning.py` with 9 offline unit tests covering:
+
+- Whitespace and line-ending normalization.
+- Preservation of technical content and internal indentation.
+- Metadata preservation and questions without accepted answers.
+- Duplicate question IDs.
+- Duplicate cleaned text.
+- Invalid records and existing annotations.
+- Valid records following invalid records with the same ID.
+- Invalid JSON, blank lines, and UTF-8 BOM input.
+- JSONL writing and reloading.
+
+## Validation performed
+
+- Ran the scraper locally to generate 20 records using the
+  `hardware-failure` tag.
+- Ran the cleaning script: **20 processed, 20 kept, 0 rejected**.
+- Ran all 9 cleaning unit tests locally: **all passed**.
+- Opened a pull request for the cleaning script and tests.
+- Confirmed GitHub reported all checks passed:
+  **6 successful checks and 2 skipped checks**.
+
+## Usage
+
+Run from the repository root:
+
+    python -m src.pc_hardware_ner.cleaning
+
+Run the cleaning tests:
+
+    python -m unittest discover -s tests -p "test_cleaning.py" -v
+
+## Limitations
+
+Duplicate text detection uses exact matches after normalization;
+near-duplicate detection is not included. Validation used a small
+sample from one tag and does not establish full dataset coverage
+or NER model quality. Annotation, PII handling, and train/test
+splitting are separate stages.
