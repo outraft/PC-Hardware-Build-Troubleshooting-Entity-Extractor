@@ -1,0 +1,36 @@
+{"text":"The Ryzen 7 7800X3D uses the AM5 socket.","entities":[{"start":4,"end":19,"label":"MODEL"},{"start":29,"end":32,"label":"SOCKET"}]}
+{"text":"I installed a Corsair 32 GB DDR5 kit.","entities":[{"start":14,"end":21,"label":"BRAND"},{"start":22,"end":27,"label":"CAPACITY"},{"start":28,"end":32,"label":"MEMORY_TYPE"}]}
+{"text":"The RTX 4070 Super needs an 850 W power supply.","entities":[{"start":4,"end":18,"label":"MODEL"},{"start":28,"end":33,"label":"POWER"},{"start":34,"end":46,"label":"COMPONENT_TYPE"}]}
+{"text":"No display after I reseated the graphics card.","entities":[{"start":0,"end":10,"label":"SYMPTOM"},{"start":19,"end":27,"label":"ACTION"},{"start":32,"end":45,"label":"COMPONENT_TYPE"}]}
+{"text":"Update BIOS to fix the DRAM LED on Windows 11.","entities":[{"start":0,"end":11,"label":"ACTION"},{"start":23,"end":31,"label":"ERROR_CODE"},{"start":35,"end":45,"label":"OS"}]}
+{"text":"My Corsair Vengeance DDR5 kit causes random reboots.","entities":[{"start":3,"end":10,"label":"BRAND"},{"start":21,"end":25,"label":"MEMORY_TYPE"},{"start":37,"end":51,"label":"SYMPTOM"}]}
+{"text":"Swapped the EVGA 850 W PSU and the no-POST issue disappeared.","entities":[{"start":0,"end":7,"label":"ACTION"},{"start":12,"end":16,"label":"BRAND"},{"start":17,"end":22,"label":"POWER"},{"start":23,"end":26,"label":"COMPONENT_TYPE"}]}
+{"text":"A Noctua NH-D15 barely fits inside a mid-tower ATX case.","entities":[{"start":2,"end":8,"label":"BRAND"},{"start":47,"end":50,"label":"FORM_FACTOR"},{"start":51,"end":55,"label":"COMPONENT_TYPE"}]}
+{"text":"The Samsung 990 Pro 2 TB NVMe drive runs at PCIe 4.0 speed.","entities":[{"start":4,"end":11,"label":"BRAND"},{"start":20,"end":24,"label":"CAPACITY"},{"start":25,"end":29,"label":"INTERFACE"}]}
+{"text":"BIOS reports a WHEA_UNCORRECTABLE error after overclocking to 5.2 GHz.","entities":[{"start":15,"end":33,"label":"ERROR_CODE"},{"start":62,"end":69,"label":"SPEED"}]}
+{"text":"My ASRock B650 motherboard only supports DDR5 memory modules.","entities":[{"start":3,"end":9,"label":"BRAND"},{"start":10,"end":14,"label":"CHIPSET"},{"start":15,"end":26,"label":"COMPONENT_TYPE"},{"start":41,"end":45,"label":"MEMORY_TYPE"}]}
+{"text":"Seeing a DRAM LED on my ASUS ROG Crosshair after installing 64 GB.","entities":[{"start":9,"end":17,"label":"ERROR_CODE"},{"start":24,"end":28,"label":"BRAND"},{"start":60,"end":65,"label":"CAPACITY"}]}
+{"text":"Reseating the GPU fixed the black screen on Windows 11.","entities":[{"start":0,"end":9,"label":"ACTION"},{"start":14,"end":17,"label":"COMPONENT_TYPE"},{"start":28,"end":40,"label":"SYMPTOM"},{"start":44,"end":54,"label":"OS"}]}
+{"text":"The Ryzen 5 7600X hits 95 degrees Celsius at stock settings.","entities":[{"start":4,"end":17,"label":"MODEL"}]}
+{"text":"Replaced the thermal paste on my i7-12700K and temperatures dropped 15 degrees.","entities":[{"start":0,"end":8,"label":"ACTION"}]}
+{"text":"Ubuntu 22.04 freezes during boot with a Radeon RX 7900 XTX.","entities":[{"start":0,"end":12,"label":"OS"},{"start":13,"end":20,"label":"SYMPTOM"},{"start":40,"end":58,"label":"MODEL"}]}
+{"text":"Check if the PCIe 5.0 slot is seated properly on an X670E chipset board.","entities":[{"start":13,"end":21,"label":"INTERFACE"},{"start":52,"end":57,"label":"CHIPSET"}]}
+{"text":"The AIO cooler leaks near the LGA1700 socket area.","entities":[{"start":4,"end":14,"label":"COMPONENT_TYPE"},{"start":15,"end":20,"label":"SYMPTOM"},{"start":30,"end":37,"label":"SOCKET"}]}
+{"text":"My SFX power supply cannot handle the RTX 4090 at 450 W TDP.","entities":[{"start":3,"end":6,"label":"FORM_FACTOR"},{"start":7,"end":19,"label":"COMPONENT_TYPE"},{"start":38,"end":46,"label":"MODEL"},{"start":50,"end":55,"label":"POWER"}]}
+{"text":"Kingston Fury Beast DDR4 3200 MHz sticks show single-channel in BIOS.","entities":[{"start":0,"end":8,"label":"BRAND"},{"start":20,"end":24,"label":"MEMORY_TYPE"},{"start":25,"end":33,"label":"SPEED"},{"start":46,"end":60,"label":"SYMPTOM"}]}
+{"text":"Clear CMOS after flashing the BIOS to resolve error code 0xA0.","entities":[{"start":0,"end":10,"label":"ACTION"},{"start":57,"end":61,"label":"ERROR_CODE"}]}
+{"text":"Upgraded from 16 GB to 32 GB DDR5 and now the system hangs at login.","entities":[{"start":14,"end":19,"label":"CAPACITY"},{"start":23,"end":28,"label":"CAPACITY"},{"start":29,"end":33,"label":"MEMORY_TYPE"},{"start":53,"end":58,"label":"SYMPTOM"}]}
+{"text":"Running memtest86 shows errors in the second DIMM slot.","entities":[{"start":24,"end":30,"label":"SYMPTOM"}]}
+{"text":"Plugged the monitor into the motherboard instead of the GPU by mistake.","entities":[{"start":29,"end":40,"label":"COMPONENT_TYPE"},{"start":56,"end":59,"label":"COMPONENT_TYPE"}]}
+{"text":"The Gigabyte Z790 Aorus Master has three M.2 NVMe slots.","entities":[{"start":4,"end":12,"label":"BRAND"},{"start":13,"end":17,"label":"CHIPSET"},{"start":41,"end":44,"label":"INTERFACE"},{"start":45,"end":49,"label":"INTERFACE"}]}
+{"text":"After a BIOS update the fan speed jumped to 2500 RPM on idle.","entities":[{"start":44,"end":52,"label":"SPEED"}]}
+{"text":"A Mini-ITX build with a 140 mm tower cooler has clearance problems.","entities":[{"start":2,"end":10,"label":"FORM_FACTOR"},{"start":24,"end":30,"label":"DIMENSION"},{"start":48,"end":57,"label":"SYMPTOM"}]}
+{"text":"The new Seasonic Focus GX 750 W works with my RX 6800 XT build.","entities":[{"start":8,"end":16,"label":"BRAND"},{"start":26,"end":31,"label":"POWER"},{"start":46,"end":56,"label":"MODEL"}]}
+{"text":"Disable XMP and test each stick individually to find the faulty module.","entities":[{"start":0,"end":11,"label":"ACTION"}]}
+{"text":"I get a VGA LED and no signal after swapping to a B550 board.","entities":[{"start":8,"end":15,"label":"ERROR_CODE"},{"start":20,"end":29,"label":"SYMPTOM"},{"start":50,"end":54,"label":"CHIPSET"}]}
+{"text":"Got a kernel panic on Ubuntu after installing a Sabrent Rocket 4 Plus.","entities":[{"start":6,"end":18,"label":"SYMPTOM"},{"start":22,"end":28,"label":"OS"},{"start":48,"end":69,"label":"MODEL"}]}
+{"text":"The CPU debug LED stays on with a Ryzen 9 7950X on first boot.","entities":[{"start":4,"end":17,"label":"ERROR_CODE"},{"start":34,"end":47,"label":"MODEL"}]}
+{"text":"Replacing the SATA cable fixed the random disk disconnects.","entities":[{"start":0,"end":9,"label":"ACTION"},{"start":14,"end":18,"label":"INTERFACE"},{"start":35,"end":58,"label":"SYMPTOM"}]}
+{"text":"My 650 W PSU shuts down when the RTX 3070 hits peak load.","entities":[{"start":3,"end":8,"label":"POWER"},{"start":9,"end":12,"label":"COMPONENT_TYPE"},{"start":13,"end":23,"label":"SYMPTOM"},{"start":33,"end":41,"label":"MODEL"}]}
+{"text":"Noctua NF-A12x25 fans at 1200 RPM keep the case under 40 degrees.","entities":[{"start":0,"end":6,"label":"BRAND"},{"start":25,"end":33,"label":"SPEED"}]}
+{"text":"Windows 10 blue screens with IRQL_NOT_LESS_OR_EQUAL after a RAM upgrade.","entities":[{"start":0,"end":10,"label":"OS"},{"start":11,"end":23,"label":"SYMPTOM"},{"start":29,"end":51,"label":"ERROR_CODE"},{"start":60,"end":63,"label":"COMPONENT_TYPE"}]}
