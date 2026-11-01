@@ -1,5 +1,0 @@
-{"text":"The Ryzen 7 7800X3D uses the AM5 socket.","entities":[{"start":4,"end":19,"label":"MODEL"},{"start":29,"end":32,"label":"SOCKET"}]}
-{"text":"I installed a Corsair 32 GB DDR5 kit.","entities":[{"start":14,"end":21,"label":"BRAND"},{"start":22,"end":27,"label":"CAPACITY"},{"start":28,"end":32,"label":"MEMORY_TYPE"}]}
-{"text":"The RTX 4070 Super needs an 850 W power supply.","entities":[{"start":4,"end":18,"label":"MODEL"},{"start":28,"end":33,"label":"POWER"},{"start":34,"end":46,"label":"COMPONENT_TYPE"}]}
-{"text":"No display after I reseated the graphics card.","entities":[{"start":0,"end":10,"label":"SYMPTOM"},{"start":19,"end":27,"label":"ACTION"},{"start":32,"end":45,"label":"COMPONENT_TYPE"}]}
-{"text":"Update BIOS to fix the DRAM LED on Windows 11.","entities":[{"start":0,"end":11,"label":"ACTION"},{"start":23,"end":31,"label":"ERROR_CODE"},{"start":35,"end":45,"label":"OS"}]}
