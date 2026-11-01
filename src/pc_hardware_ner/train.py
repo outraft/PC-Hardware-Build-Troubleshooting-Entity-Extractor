@@ -34,7 +34,7 @@ def evaluate(nlp: spacy.Language, examples: list[Example]) -> dict[str, float]:
     if not examples:
         return {}
     predictions = [Example(nlp(example.reference.text), example.reference) for example in examples]
-    return Scorer().score(predictions)
+    return Scorer(nlp).score(predictions)
 
 
 def main() -> None:
@@ -95,6 +95,17 @@ def main() -> None:
             f"recall={metrics.get('ents_r', 0.0):.3f}, "
             f"F1={metrics.get('ents_f', 0.0):.3f}"
         )
+        per_type = metrics.get("ents_per_type", {})
+        if per_type:
+            print("Per-entity scores:")
+            for label in sorted(per_type):
+                scores = per_type[label]
+                print(
+                    f"  {label:20s}  "
+                    f"P={scores.get('p', 0.0):.3f}  "
+                    f"R={scores.get('r', 0.0):.3f}  "
+                    f"F1={scores.get('f', 0.0):.3f}"
+                )
     else:
         print("Holdout evaluation skipped (need at least 5 examples and a non-zero test size, or pass --test-data).")
 
