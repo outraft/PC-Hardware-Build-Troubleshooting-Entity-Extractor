@@ -8,6 +8,8 @@ A Python NLP starter project for extracting PC-hardware entities and returning P
 
 - Predicts token-level POS tags for ordinary text and for product-name/spec values in the catalog. Dataset POS output keeps each token linked to its source feature field (such as `socket`, `speed`, or `form_factor`).
 - Predicts custom, span-level NER tags for hardware/build and troubleshooting text.
+- Extracts base noun-phrase chunks (NP) with token-level IOB tags.
+- Detects and redacts common PII from upstream-provided text.
 - Trains from JSONL annotations, evaluates on a held-out split when the dataset is large enough, saves a reloadable spaCy model, and predicts from text or JSONL.
 - Accepts already-cleaned text. The model does not fetch, clean, or engineer data.
 
@@ -53,6 +55,8 @@ src/pc_hardware_ner/
   train.py                # Train and evaluate
   predict.py              # CLI prediction
   dataset_pos.py          # POS-tag product/catalog JSON, JSONL, or CSV fields
+  chunking.py             # Parser-based NP chunks and IOB output
+  pii.py                  # Common PII detection and redaction
 requirements.txt
 ```
 
@@ -120,15 +124,39 @@ python -m src.pc_hardware_ner.predict --model models/pc-hardware-ner --input dat
 
 Each output record contains the original text, entities with character offsets, and POS-tagged tokens. Use `--pretty` for readable single-text output. If no trained model exists yet, inference reports an error rather than silently using an untrained model.
 
+## Chunking
+
+Run parser-based base noun-phrase chunking on text already prepared by the data team. Output includes NP spans with character offsets and per-token `B-NP`/`I-NP`/`O` tags.
+
+```bash
+python -m src.pc_hardware_ner.chunking --text "My PC will not boot after I replaced the motherboard." --pretty
+python -m src.pc_hardware_ner.chunking --input data/processed.jsonl --output results/chunks.jsonl
+```
+
+This is a spaCy dependency-parser baseline, not a separately trained chunking model. It requires a model with a dependency parser.
+
+## PII detection/redaction
+
+Run on user-generated troubleshooting text supplied by the data team. It detects common email addresses, phone numbers, IPv4 addresses, usernames, and spaCy-recognized people/locations, then returns a redacted copy and original span offsets.
+
+```bash
+python -m src.pc_hardware_ner.pii --text "Email alex@example.com about the no-display issue." --pretty
+python -m src.pc_hardware_ner.pii --input data/processed.jsonl --output results/redacted.jsonl
+```
+
+PII detection is a safety baseline, not exhaustive: names/locations can be missed or over-redacted. Review its output before sharing text. It is intended for prose, not hardware specification fields where number patterns can be misidentified.
+
+Punctuation restoration is not included because Stack Exchange question/answer prose is already punctuated. It would need its own punctuation-corrupted inputs and clean reference targets to train/evaluate meaningfully.
+
 ## Tests
 
-The unit tests exercise both final stages: simple hardware requests are checked for both counterpart entities and offsets, and catalog-shaped product rows are checked for POS output that retains field/index context.
+The unit tests cover prediction, dataset-aware POS, noun-phrase chunking, and common PII redaction.
 
 ```bash
 python -m unittest discover -s tests -v
 ```
 
-The request test uses fixed `EntityRuler` patterns to make expected extraction deterministic; the dataset POS test uses a record shape from the source dataset. These tests cover output/pipeline behavior, not learned model accuracy or hardware compatibility.
+The request test uses fixed `EntityRuler` patterns to make expected extraction deterministic; the dataset POS test uses a record shape from the source dataset. Tests cover output behavior, not learned model accuracy, exhaustive PII recall, or hardware compatibility.
 
 ## Suggested workflow
 
@@ -148,6 +176,7 @@ The catalog source is [docyx/pc-part-dataset](https://github.com/docyx/pc-part-d
 - No trained project-specific model or usable training corpus is included; the tiny synthetic annotation file is only a format example.
 - A pretrained POS tagger may mis-tag hardware model strings, abbreviations, and specs. Field context is preserved, but numeric/structured specs are not POS-supervised gold annotations.
 - NER quality depends on consistent span annotations and sufficient examples for every desired label.
+- Chunking and PII detection are parser/rule-based baselines and should be evaluated on the team's prepared troubleshooting text.
 - Catalog data supports part/product vocabulary, but not troubleshooting intent or symptom extraction by itself.
 - This is a research/starter pipeline, not a hardware compatibility checker or diagnostic system.
 

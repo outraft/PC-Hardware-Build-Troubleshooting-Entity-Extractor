@@ -14,6 +14,8 @@ Created the initial NLP project structure and documented the end-to-end workflow
 - Added a training command that supports a deterministic random holdout or an optional separate held-out JSONL file, configurable epochs, seed, base model, and output path. It reports holdout NER precision, recall, and F1 when evaluation data is available.
 - Added a prediction command for single text and JSONL batches. Results include extracted entities with character offsets and per-token POS, detailed tag, and lemma.
 - Added a dataset-aware POS command for the PC-part JSON, JSONL, and CSV records. It POS-tags product names and field values while retaining the source feature key and array index for each token, so numeric tags remain interpretable in context (for example, `NUM` attached to `speed`).
+- Added parser-based noun-phrase chunking with NP spans, offsets, and token IOB tags.
+- Added a PII detection/redaction CLI for common identifiers and model-recognized people/locations in upstream-prepared text.
 - Added a small synthetic annotation example file to demonstrate the input format. It is a workflow/demo fixture, not a sufficient training corpus.
 
 ## Entity labels
@@ -36,13 +38,14 @@ POS tags are predicted separately by the pretrained English pipeline. Troublesho
 - Documented [docyx/pc-part-dataset](https://github.com/docyx/pc-part-dataset) as a catalog source rather than an annotated NLP corpus. No scraping or dataset download is included.
 - Added prediction-stage unit tests that verify a simple hardware request extracts both referenced model counterparts, returns correct character offsets, and includes POS tags.
 - Added catalog-record POS tests using the source dataset's product shape; they check POS output and preservation of specification-field/index context.
+- Added chunking and PII tests covering phrase offsets/IOB output and common identifier masking.
 
 ## Validation performed
 
 - Installed the pinned dependencies into the ignored local virtual environment.
-- Ran the unit test suite: **4 tests passed**.
+- Ran the unit test suite: **6 tests passed**.
 - Compiled the Python source and test files successfully.
 - Ran a one-epoch training smoke test using the tiny synthetic examples and loaded the resulting model for a prediction smoke test.
 - Confirmed the synthetic annotation spans map to the expected text and ran `git diff --check`.
 
-The smoke-test corpus is intentionally too small to establish model quality. Real performance requires a representative, consistently annotated dataset and an appropriately separated evaluation set. The extractor identifies text entities; it does not validate PC compatibility or diagnose hardware faults.
+The smoke-test corpus is intentionally too small to establish model quality. Real NER performance requires a representative, consistently annotated dataset and an appropriately separated evaluation set. Chunking and PII are parser/rule-based baselines and need evaluation on representative troubleshooting text. Punctuation restoration is not included because the planned Stack Exchange prose is already punctuated. The extractor identifies text entities; it does not validate PC compatibility or diagnose hardware faults.
